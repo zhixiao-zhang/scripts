@@ -1,21 +1,23 @@
 #!/bin/bash
-cd ~/src/vim/src/
 
-arch=$(uname -s)
+ARCH=$(uname -s)
 
-if [ $arch == "Darwin" ]; then
-  lua_prefix="/opt/homebrew/include/lua5.4/"
+if [ $ARCH == "Darwin" ]; then
+  LUA_PREFIX="/opt/homebrew/include/lua5.4/"
+  SOURCE_DIR="/Users/$(whoami)/src/vim/src/"
 else
-  lua_prefix="/usr/include/lua5.4/"
+  LUA_PREFIX="/usr/include/lua5.4/"
+  SOURCE_DIR="/home/$(whoami)/src/vim/src/"
 fi
 
+cd $SOURCE_DIR
 # Update the source code
 git pull
 # Configure
 ./configure \
   --enable-luainterp=yes \
   --enable-python3interp=yes \
-  --with-lua-prefix=$lua_prefix \
+  --with-lua-prefix=$LUA_PREFIX \
   --with-x \
   --enable-multibyte \
   --enable-terminal \
