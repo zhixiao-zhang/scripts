@@ -5,8 +5,11 @@ arch=$(uname -s)
 
 if [ $arch == "Darwin" ]; then
   lua_prefix="/opt/homebrew/include/lua5.4/"
+  export CC="clang"
+  with_x=""
 else
   lua_prefix="/usr/include/lua5.4/"
+  with_x="--with-x"
 fi
 
 # Update the source code
@@ -16,11 +19,11 @@ git pull
   --enable-luainterp=yes \
   --enable-python3interp=yes \
   --with-lua-prefix=$lua_prefix \
-  --with-x \
   --enable-multibyte \
   --enable-terminal \
   --enable-largefile \
-  --disable-netbeans
+  --disable-netbeans \
+  $with_x
 
 make -j $(nproc)
 sudo make install

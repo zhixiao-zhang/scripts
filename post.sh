@@ -1,7 +1,7 @@
 #!/opt/homebrew/bin/bash
 
 cd ~/src/blog/
-hugo
+./hugow
 cd ./public/
 
 # add " to the commit message
