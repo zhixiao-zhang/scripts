@@ -2,7 +2,7 @@
 
 cd ~/src/blog/
 ./hugow
-cd ./public/
+rsync -av ./public blogserver:~/ --delete --exclude=.DS_Store
 
 # add " to the commit message
 msg="$1"
@@ -14,10 +14,4 @@ git add .
 git commit -m "$msg"
 
 # Push changes
-git push origin master
-
-cd ../
-
-git add .
-git commit -m "$msg"
 git push origin master

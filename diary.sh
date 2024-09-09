@@ -18,4 +18,4 @@ if [ ! -f content/post/junk/$date.md ]; then
 fi
 
 # Open the post in vim
-vim content/post/junk/$date.md
+/Applications/Typora.app/Contents/MacOS/Typora content/post/junk/$date.md
